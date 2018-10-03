@@ -10,24 +10,25 @@ import { ToastService } from '../../services/toast';
   selector: 'page-book-detail',
   templateUrl: 'book-detail.html',
 })
-export class BookDetailPage implements OnInit{
-  
+export class BookDetailPage implements OnInit {
+
   public book: Book;
-  public isLoading: boolean = false;
   public id: number;
   //Reactive form
   public form: FormGroup;
   public submitted: boolean = false;
   public submittedValues = {};
 
+  public isSubmitting: boolean = false;
+
   constructor(public navCtrl: NavController,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     public navParams: NavParams,
     private bookService: BookService,
     private toastServ: ToastService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.book = this.navParams.get('book');
     this.form = this.formBuilder.group({
       title: [''],
@@ -39,22 +40,22 @@ export class BookDetailPage implements OnInit{
     this.form.patchValue(this.book);
   }
 
-  formBookDetailSubmitted(){
+  formBookDetailSubmitted() {
+    this.isSubmitting = true;
     this.submittedValues = this.form.value;
     this.book = {
       id: this.book.id,
       ...this.form.value
     };
-    this.submitted = true;
-    this.bookService.saveBook(this.book).subscribe((book)=>{
-      console.log(book);
-      this.isLoading = false;
-      this.toastServ.presentToast('Update succesfully');
-    })
-  }
 
-  ionViewDidLoad() {
-    
+    this.submitted = true;
+    this.bookService.saveBook(this.book).subscribe((book) => {
+      this.toastServ.presentToast('Update succesfully');
+      this.isSubmitting = false;
+    },() => {
+      this.isSubmitting = false;
+      this.toastServ.presentToast('Update error');
+    })
   }
 
 }
