@@ -11,6 +11,8 @@ import { ToastService } from "../../services/toast";
 
     public form: FormGroup;
     public title: string;
+    public bookAdded: boolean;
+    public id: number;
 
     constructor( private formBuilder: FormBuilder,
                  private bookService: BookService,
@@ -19,6 +21,7 @@ import { ToastService } from "../../services/toast";
     }
 
     ngOnInit(){
+        this.bookAdded = false;
         this.title = 'New Book';
         this.form = this.formBuilder.group({
             title: [''],
@@ -30,7 +33,16 @@ import { ToastService } from "../../services/toast";
 
     addBookSubmmited(){
         this.bookService.addBook(this.form.value).subscribe(()=>{
-            this.toastService.presentToast('Book added successfully');
+            this.toastService.presentToast('Book added successfully.');
+            this.bookAdded = true;
+            this.title = this.form.value.title;
+            this.id = this.form.value.id;
+        }, () => {
+            this.toastService.presentToast('Error.')
         })
+    }
+
+    deleteBook(){
+        
     }
 }

@@ -40,10 +40,10 @@
     <ion-fab right bottom>
         <ion-row>
             <ion-col>
-                <button ion-fab color="danger" (click)="addBookSubmmited();"><ion-icon name="trash"></ion-icon></button>
+                <button ion-fab color="danger" (click)="deleteBook();" *ngIf="bookAdded"><ion-icon name="trash"></ion-icon></button>
             </ion-col>
             <ion-col>
-                <button ion-fab color="primary" (click)="addBookSubmmited();"><ion-icon name="checkmark"></ion-icon></button>
+                <button ion-fab color="primary" (click)="addBookSubmmited();" ><ion-icon name="checkmark"></ion-icon></button>
             </ion-col>
         </ion-row>
         
