@@ -58,4 +58,15 @@ export class BookDetailPage implements OnInit {
     })
   }
 
+  deleteBook(){
+    this.isSubmitting = true;
+    this.bookService.deleteBook(this.book.id).subscribe(() => {
+      this.toastServ.presentToast('Deleted succesfully');
+      this.isSubmitting = false;
+    },() => {
+      this.isSubmitting = false;
+      this.toastServ.presentToast('Deleting error');
+    })
+  }
+
 }
