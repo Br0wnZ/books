@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Book, BookService } from '../../services/book-service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastService } from '../../services/toast';
+import { ConfirmAlertService } from '../../services/confirmAlert';
 
 
 
@@ -25,7 +26,8 @@ export class BookDetailPage implements OnInit {
     private formBuilder: FormBuilder,
     public navParams: NavParams,
     private bookService: BookService,
-    private toastServ: ToastService) {
+    private toastServ: ToastService,
+    private alertService: ConfirmAlertService) {
   }
 
   ngOnInit() {
@@ -55,6 +57,17 @@ export class BookDetailPage implements OnInit {
     },() => {
       this.isSubmitting = false;
       this.toastServ.presentToast('Update error');
+    })
+  }
+
+  deleteBook(){    
+    this.isSubmitting = true;
+    this.bookService.deleteBook(this.book.id).subscribe(() => {
+      this.toastServ.presentToast('Deleted succesfully');
+      this.isSubmitting = false;
+    },() => {
+      this.isSubmitting = false;
+      this.toastServ.presentToast('Deleting error');
     })
   }
 
