@@ -3,6 +3,7 @@ import { Book, BookService } from "../../services/book-service";
 import { Subscription } from "rxjs/Subscription";
 import { NavController } from "ionic-angular";
 import { BookDetailPage } from "../book-detail/book-detail";
+import { NewBookPage } from "../new-book/new-book";
 
 
 @Component({
@@ -41,5 +42,9 @@ import { BookDetailPage } from "../book-detail/book-detail";
         this.navCtrl.push(BookDetailPage,{
             book: book
         });
+    }
+
+    addBook(){
+        this.navCtrl.push(NewBookPage);
     }
   }

@@ -29,5 +29,9 @@ export class BookService{
     return <Observable<Book>>
       this.http.put(`${this.booksEndpoint}/${book.id}`, book);
   }
+
+  addBook(book: Book): Observable<Book>{
+    return this.http.post(`${this.booksEndpoint}`, book) as Observable<Book>;
+  }
     
 }

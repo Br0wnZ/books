@@ -12,6 +12,7 @@ import { BookService } from '../services/book-service';
 
 import { BookDetailPage } from '../pages/book-detail/book-detail';
 import { ToastService } from '../services/toast';
+import { NewBookPage } from '../pages/new-book/new-book';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ToastService } from '../services/toast';
     MyApp,
     HomePage,
     BookListPage,
-    BookDetailPage
+    BookDetailPage,
+    NewBookPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { ToastService } from '../services/toast';
     MyApp,
     HomePage,
     BookListPage,
-    BookDetailPage
+    BookDetailPage,
+    NewBookPage
   ],
   providers: [
     StatusBar,

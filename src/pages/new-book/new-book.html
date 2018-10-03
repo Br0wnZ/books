@@ -1,11 +1,51 @@
 
 <ion-header>
-
+    <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-fab bottom right edge>
-        <button ion-fab color="danger"><ion-icon name="md-trash"></ion-icon></button>
-        <button ion-fab color="primary"><ion-icon name="md-checkmark"></ion-icon></button>
+
+    <form [formGroup]="form" (submit)="addBookSubmmited()">
+
+        <ion-item>
+            <ion-label stacked>Title</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Language</ion-label>
+            <ion-select formControlName="language">
+                <ion-option value="Java">Java</ion-option>
+                <ion-option value="Javascript">Javascript</ion-option>
+                <ion-option value="C++">C++</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Edition</ion-label>
+            <ion-input type="text" formControlName="edition"> </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Publisher</ion-label>
+            <ion-input type="text" formControlName="publisher"> </ion-input>
+        </ion-item>
+    </form>
+
+
+    <ion-fab right bottom>
+        <ion-row>
+            <ion-col>
+                <button ion-fab color="danger" (click)="addBookSubmmited();"><ion-icon name="trash"></ion-icon></button>
+            </ion-col>
+            <ion-col>
+                <button ion-fab color="primary" (click)="addBookSubmmited();"><ion-icon name="checkmark"></ion-icon></button>
+            </ion-col>
+        </ion-row>
+        
     </ion-fab>
 </ion-content>
