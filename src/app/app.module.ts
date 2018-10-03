@@ -24,7 +24,6 @@ import { BookDetailPage } from '../pages/book-detail/book-detail';
     MyApp,
     HomePage,
     BookDetailPage
-    
   ],
   providers: [
     StatusBar,
