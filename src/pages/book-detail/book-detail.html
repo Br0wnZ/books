@@ -1,0 +1,39 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title><span>
+                <!-- {{ 'detailrecommendation.Title' | translate}} -->
+            </span></ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form (submit)="formBookDetailSubmitted()">
+
+        <ion-item>
+            <ion-label stacked>Title</ion-label>
+            <ion-input type="text"> </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Language</ion-label>
+            <ion-select>
+                <ion-option value="java">Java</ion-option>
+                <ion-option value="javascript">Javascript</ion-option>
+                <ion-option value="c">C++</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Edition</ion-label>
+            <ion-input type="text"> </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label staked>Publisher</ion-label>
+            <ion-input type="text"> </ion-input>
+        </ion-item>
+    </form>
+
+</ion-content>
