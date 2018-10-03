@@ -31,7 +31,7 @@ export class BookDetailPage implements OnInit{
     this.book = this.navParams.get('book');
     this.form = this.formBuilder.group({
       title: [''],
-      languaje: [''],
+      language: [''],
       edition: [''],
       publisher: ['']
     })

@@ -11,6 +11,7 @@ import { BookListPage } from '../pages/book-list/book-list';
 import { BookService } from '../services/book-service';
 
 import { BookDetailPage } from '../pages/book-detail/book-detail';
+import { ToastService } from '../services/toast';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { BookDetailPage } from '../pages/book-detail/book-detail';
     StatusBar,
     SplashScreen,
     BookService,
+    ToastService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

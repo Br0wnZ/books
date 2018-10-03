@@ -38,6 +38,8 @@ import { BookDetailPage } from "../book-detail/book-detail";
     }
 
     showDetails(book){
-        this.navCtrl.push(BookDetailPage);
+        this.navCtrl.push(BookDetailPage,{
+            book: book
+        });
     }
   }
