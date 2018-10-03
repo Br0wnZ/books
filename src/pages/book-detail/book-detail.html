@@ -10,16 +10,16 @@
 
 
 <ion-content padding>
-    <form (submit)="formBookDetailSubmitted()">
+    <form [formGroup]="form" (submit)="formBookDetailSubmitted()">
 
         <ion-item>
             <ion-label stacked>Title</ion-label>
-            <ion-input type="text"> </ion-input>
+            <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label stacked>Language</ion-label>
-            <ion-select>
+            <ion-select formControlName="language">
                 <ion-option value="java">Java</ion-option>
                 <ion-option value="javascript">Javascript</ion-option>
                 <ion-option value="c">C++</ion-option>
@@ -28,11 +28,11 @@
 
         <ion-item>
             <ion-label stacked>Edition</ion-label>
-            <ion-input type="text"> </ion-input>
+            <ion-input type="text" formControlName="edition"> </ion-input>
         </ion-item>
         <ion-item>
             <ion-label stacked>Publisher</ion-label>
-            <ion-input type="text"> </ion-input>
+            <ion-input type="text" formControlName="publisher"> </ion-input>
         </ion-item>
     </form>
 
