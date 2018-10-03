@@ -15,6 +15,7 @@ import { BookListPage } from "../book-list/book-list";
     public form: FormGroup;
     public title: string;
     public bookAdded: boolean;
+    public isLoading: boolean;
     public id: number;
 
     constructor( private formBuilder: FormBuilder,
@@ -37,11 +38,14 @@ import { BookListPage } from "../book-list/book-list";
     }
 
     addBookSubmmited(){
+        this.isLoading = true;
+        
         this.bookService.addBook(this.form.value).subscribe((book)=>{
             this.toastService.presentToast('Book added successfully.');
             this.bookAdded = true;
             this.title = this.form.value.title;
             this.id = book.id;
+            this.isLoading = false;
         }, () => {
             this.toastService.presentToast('Error.')
         })
@@ -51,6 +55,7 @@ import { BookListPage } from "../book-list/book-list";
         this.confirmAlertService.presentConfirm('Book deletion confirmation', 'Are you sure you want delete this book?');
 
         this.confirmAlertService.okPressed.subscribe(() => {
+            
             this.bookService.deleteBook(this.id).subscribe(() => {
                 this.navContrl.setRoot(BookListPage);
                 this.toastService.presentToast('Book deleted successfully');
