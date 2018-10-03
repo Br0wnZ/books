@@ -13,6 +13,7 @@ import { BookService } from '../services/book-service';
 import { BookDetailPage } from '../pages/book-detail/book-detail';
 import { ToastService } from '../services/toast';
 import { NewBookPage } from '../pages/new-book/new-book';
+import { ConfirmAlertService } from '../services/confirmAlert';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NewBookPage } from '../pages/new-book/new-book';
     SplashScreen,
     BookService,
     ToastService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfirmAlertService
   ]
 })
 export class AppModule {}

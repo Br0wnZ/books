@@ -6,6 +6,7 @@ import { AlertController } from "ionic-angular";
 export class ConfirmAlertService {
 
     @Output() public okPressed = new EventEmitter<void>();
+    @Output() public cancelPressed = new EventEmitter<void>();
 
     constructor( private alertCtrl: AlertController ){
 
@@ -20,7 +21,7 @@ export class ConfirmAlertService {
               text: 'Cancel',
               role: 'cancel',
               handler: () => {
-                console.log('Cancel clicked');
+                this.cancelPressed.emit();
               }
             },
             {
