@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Book, BookService } from "../../services/book-service";
 import { Subscription } from "rxjs/Subscription";
 import { NavController } from "ionic-angular";
+import { BookDetailPage } from "../book-detail/book-detail";
 
 
 @Component({
@@ -34,5 +35,9 @@ import { NavController } from "ionic-angular";
         if(this.bookSubscription){
             this.bookSubscription.unsubscribe();
         }
+    }
+
+    showDetails(book){
+        this.navCtrl.push(BookDetailPage);
     }
   }
