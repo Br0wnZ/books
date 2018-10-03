@@ -4,6 +4,7 @@ import { Book, BookService } from '../../services/book-service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastService } from '../../services/toast';
 import { ConfirmAlertService } from '../../services/confirmAlert';
+import { BookListPage } from '../book-list/book-list';
 
 
 
@@ -26,8 +27,8 @@ export class BookDetailPage implements OnInit {
     private formBuilder: FormBuilder,
     public navParams: NavParams,
     private bookService: BookService,
-    private toastServ: ToastService,
-    private alertService: ConfirmAlertService) {
+    private toastService: ToastService,
+    private confirmAlertService: ConfirmAlertService) {
   }
 
   ngOnInit() {
@@ -52,23 +53,30 @@ export class BookDetailPage implements OnInit {
 
     this.submitted = true;
     this.bookService.saveBook(this.book).subscribe((book) => {
-      this.toastServ.presentToast('Update succesfully');
+      this.toastService.presentToast('Update succesfully');
       this.isSubmitting = false;
-    },() => {
+    }, () => {
       this.isSubmitting = false;
-      this.toastServ.presentToast('Update error');
+      this.toastService.presentToast('Update error');
     })
   }
 
-  deleteBook(){    
+  deleteBook() {
     this.isSubmitting = true;
-    this.bookService.deleteBook(this.book.id).subscribe(() => {
-      this.toastServ.presentToast('Deleted succesfully');
-      this.isSubmitting = false;
-    },() => {
-      this.isSubmitting = false;
-      this.toastServ.presentToast('Deleting error');
-    })
+    this.confirmAlertService.presentConfirm('Book deletion confirmation', 'Are you sure you want delete this book?');
+    this.confirmAlertService.okPressed.subscribe(() => {
+      this.bookService.deleteBook(this.book.id).subscribe(() => {
+        this.navCtrl.setRoot(BookListPage);
+        this.toastService.presentToast('Book deleted successfully');
+        this.isSubmitting = false;
+      }, () => {
+        this.isSubmitting = false;
+      });
+    });
+
+    this.confirmAlertService.cancelPressed.subscribe(() => {
+      this.toastService.presentToast('Operation canceled');
+    });
   }
 
 }
