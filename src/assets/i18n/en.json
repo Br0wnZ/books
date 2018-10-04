@@ -1,0 +1,28 @@
+{
+    "bookList": {
+        "title": "Book List",
+        "retry": "Retry",
+        "serverError": "Server error"
+    },
+    "bookDetails": {
+        "title": "Title",
+        "language": "Language",
+        "edition": "Edition",
+        "publisher": "Publisher",
+        "confirm": "Book deletion confirmation",
+        "areYouSure": "Are you sure you want to delete this book?"
+    },
+    "newBook": {
+        "title": "New bbok",
+        "bookTitle": "Title",
+        "language": "Language",
+        "edition": "Edition",
+        "publisher": "Publisher"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "updateSuccesfully": "Book update succesfully",
+    "updateError": "Update error",
+    "bookAdded": "Book added succesfully"
+}

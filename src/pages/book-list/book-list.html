@@ -18,7 +18,7 @@
         <p>{{ book.publisher }}</p>
       </ion-item>
     </ion-list>
-    <ion-fab right bottom padding>
+    <ion-fab right bottom padding [hidden]="isLoading">
       <button ion-fab color="secondary" (click)="addBook();"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 

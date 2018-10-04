@@ -23,5 +23,6 @@
     "no": "No",
     "cancel": "Cancelar",
     "updateSuccesfully": "Actualizado correctamente",
-    "updateError": "Error al actualizar"
+    "updateError": "Error al actualizar",
+    "bookAdded": "Libro añadido correctamente"
 }

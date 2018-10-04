@@ -5,6 +5,7 @@ import { ToastService } from "../../services/toast";
 import { ConfirmAlertService } from "../../services/confirmAlert";
 import { NavController } from "ionic-angular";
 import { BookListPage } from "../book-list/book-list";
+import { TranslateService } from "@ngx-translate/core";
 
 
 @Component({
@@ -22,7 +23,8 @@ import { BookListPage } from "../book-list/book-list";
                  private bookService: BookService,
                  private toastService: ToastService,
                  private confirmAlertService: ConfirmAlertService,
-                 private navContrl : NavController ){
+                 private navContrl : NavController,
+                 private translate: TranslateService ){
 
     }
 
@@ -39,9 +41,12 @@ import { BookListPage } from "../book-list/book-list";
 
     addBookSubmmited(){
         this.isLoading = true;
-        
+        let bookAdded: string;
+        this.translate.get('bookAdded').subscribe(res=>{
+            bookAdded = res;
+        })
         this.bookService.addBook(this.form.value).subscribe((book)=>{
-            this.toastService.presentToast('Book added successfully.');
+            this.toastService.presentToast(bookAdded);
             this.bookAdded = true;
             this.title = this.form.value.title;
             this.id = book.id;
