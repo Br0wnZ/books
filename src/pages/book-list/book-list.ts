@@ -14,6 +14,7 @@ import { NewBookPage } from "../new-book/new-book";
 
     private isLoading: boolean;
     private books: Book[];
+    public errorLoading: boolean = false;
 
     private bookSubscription: Subscription;
 
@@ -22,13 +23,29 @@ import { NewBookPage } from "../new-book/new-book";
 
     }
 
-    
+    loadBookList(){
+        this.isLoading = true;
+        this.errorLoading = false;
+        this.bookSubscription = this.bookService.getBooks()
+        .subscribe((books: Book[])=>{
+            this.books = books;
+            this.isLoading = false;
+            this.errorLoading = false;
+        }, (error)=>{
+            this.errorLoading = true;
+        })
+    }
+
     ngOnInit(){
         this.isLoading = true;
         this.bookSubscription = this.bookService.getBooks()
         .subscribe((books: Book[])=>{
             this.books = books;
             this.isLoading = false;
+            this.errorLoading = false;
+        }, (error)=>{
+            this.isLoading = false;
+            this.errorLoading = true;
         })
     }
 

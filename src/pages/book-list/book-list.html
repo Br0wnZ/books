@@ -22,5 +22,10 @@
     <ion-fab right bottom>
       <button ion-fab color="secondary" (click)="addBook();"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
+
+    <div text-center *ngIf="errorLoading">
+      <h2>Server error</h2>
+      <button ion-button color="secondary" (click)="loadBookList()">Retry</button>
+    </div>
     
   </ion-content>
