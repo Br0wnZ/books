@@ -33,6 +33,7 @@ import { NewBookPage } from "../new-book/new-book";
             this.errorLoading = false;
         }, (error)=>{
             this.errorLoading = true;
+            this.isLoading = false;
         })
     }
 
