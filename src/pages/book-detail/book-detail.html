@@ -13,12 +13,12 @@
     <form [formGroup]="form">
 
         <ion-item>
-            <ion-label stacked>Title</ion-label>
+            <ion-label stacked>{{ 'bookDetails.title' | translate }}</ion-label>
             <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label stacked>Language</ion-label>
+            <ion-label stacked>{{ 'bookDetails.language' | translate }}</ion-label>
             <ion-select formControlName="language">
                 <ion-option value="Java">Java</ion-option>
                 <ion-option value="Javascript">Javascript</ion-option>
@@ -27,16 +27,16 @@
         </ion-item>
 
         <ion-item>
-            <ion-label stacked>Edition</ion-label>
+            <ion-label stacked>{{ 'bookDetails.edition' | translate }}</ion-label>
             <ion-input type="text" formControlName="edition"> </ion-input>
         </ion-item>
         <ion-item>
-            <ion-label stacked>Publisher</ion-label>
+            <ion-label stacked>{{ 'bookDetails.publisher' | translate }}</ion-label>
             <ion-input type="text" formControlName="publisher"> </ion-input>
         </ion-item>
     </form>
 
-    <ion-fab bottom right>
+    <ion-fab bottom right padding>
         <ion-row>
             <ion-col>
                 <button ion-fab color="danger" (click)="deleteBook()" [disabled]= "isSubmitting">

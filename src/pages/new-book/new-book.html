@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ title }}</ion-title>
+    <ion-title>{{ 'newBook.title' | translate }}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -13,12 +13,12 @@
     <form [formGroup]="form" (submit)="addBookSubmmited()">
 
         <ion-item>
-            <ion-label stacked>Title</ion-label>
+            <ion-label stacked>{{ 'newBook.bookTitle' | translate }}</ion-label>
             <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label stacked>Language</ion-label>
+            <ion-label stacked>{{ 'newBook.language' | translate }}</ion-label>
             <ion-select formControlName="language">
                 <ion-option value="Java">Java</ion-option>
                 <ion-option value="Javascript">Javascript</ion-option>
@@ -27,25 +27,26 @@
         </ion-item>
 
         <ion-item>
-            <ion-label stacked>Edition</ion-label>
+            <ion-label stacked>{{ 'newBook.edition' | translate }}</ion-label>
             <ion-input type="text" formControlName="edition"> </ion-input>
         </ion-item>
         <ion-item>
-            <ion-label stacked>Publisher</ion-label>
+            <ion-label stacked>{{ 'newBook.publisher' | translate }}</ion-label>
             <ion-input type="text" formControlName="publisher"> </ion-input>
         </ion-item>
     </form>
 
-
+    <div padding>
     <ion-fab right bottom>
         <ion-row>
             <ion-col>
                 <button ion-fab color="danger" (click)="deleteBook();" *ngIf="bookAdded"><ion-icon name="trash"></ion-icon></button>
             </ion-col>
             <ion-col>
-                <button ion-fab color="primary" (click)="addBookSubmmited();" [disabled]="isLoading"><ion-icon name="checkmark"></ion-icon></button>
+                <button ion-fab color="primary"  (click)="addBookSubmmited();" [disabled]="form.invalid"><ion-icon name="checkmark"></ion-icon></button>
             </ion-col>
         </ion-row>
         
     </ion-fab>
+</div>
 </ion-content>

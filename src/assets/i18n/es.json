@@ -1,0 +1,27 @@
+{
+    "bookList": {
+        "title": "Lista de libros",
+        "retry": "Reintentar",
+        "serverError": "Error del servidor"
+    },
+    "bookDetails": {
+        "title": "Título",
+        "language": "Lenguaje",
+        "edition": "Edición",
+        "publisher": "Editor",
+        "confirm": "Confirmar eliminación",
+        "areYouSure": "¿Estás seguro que quieres eliminar este libro?"
+    },
+    "newBook": {
+        "title": "Libro Nuevo",
+        "bookTitle": "Título",
+        "language": "Lenguaje",
+        "edition": "Edición",
+        "publisher": "Editor"
+    },
+    "yes": "Sí",
+    "no": "No",
+    "cancel": "Cancelar",
+    "updateSuccesfully": "Actualizado correctamente",
+    "updateError": "Error al actualizar"
+}

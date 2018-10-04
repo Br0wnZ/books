@@ -3,12 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Book List</ion-title>
+    <ion-title>{{ 'bookList.title' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-  <ion-content>
+  <ion-content padding>
     <div text-center padding [hidden]="!isLoading">
       <ion-spinner></ion-spinner>
     </div>
@@ -18,14 +18,13 @@
         <p>{{ book.publisher }}</p>
       </ion-item>
     </ion-list>
-
-    <ion-fab right bottom>
+    <ion-fab right bottom padding>
       <button ion-fab color="secondary" (click)="addBook();"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 
     <div text-center *ngIf="errorLoading">
-      <h2>Server error</h2>
-      <button ion-button color="secondary" (click)="loadBookList()">Retry</button>
+      <h2>{{ 'bookList.serverError' | translate }}</h2>
+      <button ion-button color="secondary" (click)="loadBookList()">{{ 'bookList.retry' | translate }}</button>
     </div>
     
   </ion-content>

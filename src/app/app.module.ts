@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +15,12 @@ import { ToastService } from '../services/toast';
 import { NewBookPage } from '../pages/new-book/new-book';
 import { ConfirmAlertService } from '../services/confirmAlert';
 
+//Internationalitation
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) { 
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json'); }
 
 @NgModule({
   declarations: [
@@ -27,7 +33,15 @@ import { ConfirmAlertService } from '../services/confirmAlert';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,8 +56,8 @@ import { ConfirmAlertService } from '../services/confirmAlert';
     SplashScreen,
     BookService,
     ToastService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ConfirmAlertService
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { BookService } from "../../services/book-service";
 import { ToastService } from "../../services/toast";
 import { ConfirmAlertService } from "../../services/confirmAlert";
@@ -30,10 +30,10 @@ import { BookListPage } from "../book-list/book-list";
         this.bookAdded = false;
         this.title = 'New Book';
         this.form = this.formBuilder.group({
-            title: [''],
-            language: [''],
-            edition: [''],
-            publisher: ['']
+            title: ['', Validators.required],
+            language: ['', Validators.required],
+            edition: ['', Validators.required],
+            publisher: ['', Validators.required]
           })
     }
 
